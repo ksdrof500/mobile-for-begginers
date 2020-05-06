@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "43887382850",
+    "firebase_url": "https://corona-in-the-world.firebaseio.com",
+    "project_id": "corona-in-the-world",
+    "storage_bucket": "corona-in-the-world.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43887382850:android:124aff442ddf006af1f8db",
+        "android_client_info": {
+          "package_name": "com.coronaintheworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43887382850-5jenpjf6lf9jlp8s2hlmcqk6plkln88n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coronaintheworld",
+            "certificate_hash": "a4b56f64dff0f7e4d2a26a66def1585015afbc56"
+          }
+        },
+        {
+          "client_id": "43887382850-nmfq81l86vvij85glhhuhdbiefjuh2v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkM5ncjdZmZAJoVKlYAHfffAZB3f3e1ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43887382850-nmfq81l86vvij85glhhuhdbiefjuh2v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

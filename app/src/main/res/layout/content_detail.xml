@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.activity.detail.DetailActivity"
+    tools:showIn="@layout/activity_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/confirmed"
+            style="@style/DetailText"
+            tools:text="Confirmados até o momento"/>
+
+        <TextView
+            android:id="@+id/death"
+            style="@style/DetailText"
+            tools:text="Confirmados até o momento"/>
+
+        <TextView
+            android:id="@+id/active"
+            style="@style/DetailText"
+            tools:text="Confirmados até o momento"/>
+
+        <TextView
+            android:id="@+id/recovered"
+            style="@style/DetailText"
+            tools:text="Confirmados até o momento"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

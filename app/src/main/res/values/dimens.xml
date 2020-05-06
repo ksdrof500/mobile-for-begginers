@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin" tools:keep="@dimen/activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin" tools:keep="@dimen/activity_vertical_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin" tools:keep="@dimen/text_margin">16dp</dimen>
+</resources>

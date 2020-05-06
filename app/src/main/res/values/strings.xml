@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Corona In The World</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="error_login">Ocorreu um erro tente novamente!</string>
+    <string name="error_default">Ocorreu um erro</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="save">País salvo</string>
+    <string name="flag">Bandeira</string>
+
+    <string name="confirmed">"Confirmados até o momento: %d"</string>
+    <string name="death">"Mortos até o momento: %d"</string>
+    <string name="recovered">"Curados até o momento: %d"</string>
+    <string name="active">"Ativos até o momento: %d"</string>
+    <string name="default_notification_channel_id">777</string>
+    <string name="empty">Não existe nenhuma notificação</string>
+</resources>
