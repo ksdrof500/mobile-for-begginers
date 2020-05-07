@@ -45,8 +45,6 @@ Run instrumentation tests:
 
 ./gradlew connectedAndroidTest
 
-## Still Needed
-- Finish tests.
 
 ## API
 - Covid19 (https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest)
