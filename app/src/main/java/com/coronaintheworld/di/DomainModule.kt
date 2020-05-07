@@ -15,7 +15,7 @@ val domainModule = module {
 
     factory {
         NotificationRepository(
-            database = get()
+            notificationDap = get()
         )
     }
 

@@ -1,23 +1,29 @@
 package com.coronaintheworld.ui.activity.detail
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import androidx.lifecycle.switchMap
 import com.coronaintheworld.local.FavoritePreferences
 import com.coronaintheworld.remote.common.ViewState
-import com.coronaintheworld.remote.dto.DetailCountry
 import com.coronaintheworld.repository.CountryRepository
 
-class DetailViewModel(val favoritePreferences: FavoritePreferences,
-                      val countryRepository: CountryRepository) : ViewModel() {
+class DetailViewModel(
+    val favoritePreferences: FavoritePreferences,
+    val countryRepository: CountryRepository
+) : ViewModel() {
 
-    lateinit var detail: LiveData<ViewState<DetailCountry>>
+    private val slug = MutableLiveData<String>()
 
-    fun getDetail(slug: String) {
-         detail = liveData {
+    var detail = slug.switchMap {
+        liveData {
             emit(ViewState.loading())
-            emit(countryRepository.getDataByCountry(slug))
+            emit(countryRepository.getDataByCountry(it))
         }
+    }
+
+    fun getDetail(slugCountry: String) {
+        slug.value = slugCountry
     }
 
     fun savePreferences(slug: String) {

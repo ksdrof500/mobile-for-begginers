@@ -46,7 +46,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun binder() {
-        detailViewModel.getDetail(slug = slugNation)
+        detailViewModel.getDetail(slugCountry = slugNation)
         detailViewModel.detail.observe(this, Observer {
             when (it.status) {
                 Status.SUCCESS -> setupData(it.data)

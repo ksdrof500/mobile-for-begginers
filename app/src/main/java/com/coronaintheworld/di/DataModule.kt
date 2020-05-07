@@ -9,7 +9,7 @@ import org.koin.dsl.module
 val dataModule = module {
     single { FavoritePreferences(androidContext()) }
     single { setupFirebaseAuth() }
-    single { NotificationDatabase.getInstance(androidContext()) }
+    single { NotificationDatabase.getInstance(androidContext()).notificationDao }
 }
 
 private fun setupFirebaseAuth() = FirebaseAuth.getInstance()
