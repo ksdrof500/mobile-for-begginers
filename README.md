@@ -61,7 +61,7 @@ Run instrumentation tests:
 * [OkHttp](http://square.github.io/okhttp/) - Http
 * [Gson](https://github.com/google/gson/) - Json
 * [Glide](https://github.com/bumptech/glide) - Image dowloading
-* [Robolectric]() - 
+* [Robolectric](http://robolectric.org/) - framework that brings fast and reliable unit tests to Android
 * [Espresso](https://google.com) - The framework, espresso UI Testing
 * [Timber](https://github.com/JakeWharton/timber) - The framework for logs
 * [Mockito](https://github.com/mockito/mockito) - The framework for test
