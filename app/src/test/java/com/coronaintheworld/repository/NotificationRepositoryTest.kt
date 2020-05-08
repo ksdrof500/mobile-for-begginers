@@ -5,7 +5,8 @@ import androidx.room.Room
 import com.coronaintheworld.local.NotificationDao
 import com.coronaintheworld.local.NotificationDatabase
 import com.coronaintheworld.local.NotificationModel
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -37,9 +38,10 @@ class NotificationRepositoryTest {
         notificationRepository = NotificationRepository(notificationDao)
     }
 
+    @ExperimentalCoroutinesApi
     @Test
     fun testInsertAndGetAll() {
-        runBlocking {
+        runBlockingTest {
             val notificationModel = NotificationModel(title = "title", text = "text")
             notificationRepository.saveNotification(notificationModel)
             val getAll = notificationRepository.getAllNotification()
