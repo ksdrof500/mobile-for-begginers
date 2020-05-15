@@ -40,7 +40,6 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         setupHeader()
-        addFlag()
         addListener()
         binder()
     }
@@ -66,16 +65,6 @@ class DetailActivity : AppCompatActivity() {
             detailViewModel.savePreferences(slug = slugNation)
             Snackbar.make(view, getString(R.string.save), Snackbar.LENGTH_LONG).show()
         }
-    }
-
-    private fun addFlag(){
-        Glide.with(this)
-            .load("https://www.countryflags.io/$idFlag/shiny/64.png")
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .fitCenter()
-            .into(bgHeader)
-
-
     }
 
     private fun setupData(data: DetailCountry?) {

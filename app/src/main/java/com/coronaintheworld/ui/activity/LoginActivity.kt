@@ -53,5 +53,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun nextToMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }

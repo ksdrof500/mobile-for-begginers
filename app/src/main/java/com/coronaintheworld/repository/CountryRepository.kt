@@ -24,7 +24,7 @@ class CountryRepository(
 
     suspend fun getDataByCountry(slug: String): ViewState<DetailCountry> {
         return try {
-            val response = covidApi.getDataByCountry(slug, formatDateYesterday()).first()
+            val response = covidApi.getDataByCountry(slug, "2020-05-05T00:00:00Z").first()
             responseHandler.handleSuccess(response)
         } catch (e: Exception) {
             responseHandler.handleException(e)
@@ -37,4 +37,6 @@ class CountryRepository(
         date.add(Calendar.DAY_OF_YEAR, -1)
         return inputFormat.format(date.time)
     }
+
+    // 2020-05-05T00:00:00Z
 }

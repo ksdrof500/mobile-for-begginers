@@ -39,9 +39,12 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun openNextScreen() {
-        if (splashViewModel.isCurrentUserAuth())
+        if (splashViewModel.isCurrentUserAuth()) {
             startActivity(Intent(this, MainActivity::class.java))
-        else
+            finish()
+        } else {
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
 }
