@@ -15,11 +15,13 @@ class HomeViewModel(
     val countries = liveData {
         emit(ViewState.loading())
         try {
-            emit(
-                responseHandler.handleSuccess(
-                    CountryUIModelMapper.map(countriesUseCase())
+            countriesUseCase()?.let {
+                emit(
+                    responseHandler.handleSuccess(
+                        CountryUIModelMapper.map(it)
+                    )
                 )
-            )
+            } ?: emit(responseHandler.handleException(Exception()))
         } catch (e: Exception) {
             emit(responseHandler.handleException(e))
         }

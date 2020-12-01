@@ -24,11 +24,14 @@ class DetailViewModel(
         liveData {
             emit(ViewState.loading())
             try {
-                emit(
-                    responseHandler.handleSuccess(
-                        DetailCountryUIModelMapper.map(context, countriesByDateUseCase(it))
+
+                countriesByDateUseCase(it)?.let { detail ->
+                    emit(
+                        responseHandler.handleSuccess(
+                            DetailCountryUIModelMapper.map(context, detail)
+                        )
                     )
-                )
+                } ?: emit(responseHandler.handleException(Exception()))
             } catch (e: Exception) {
                 emit(responseHandler.handleException(e))
             }

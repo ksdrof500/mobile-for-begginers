@@ -5,6 +5,6 @@ import com.coronaintheworld.domain.entity.DetailCountry
 
 interface CountrySource {
 
-    suspend fun getCountries(): List<Country>
-    suspend fun getDataByCountry(slug: String): DetailCountry
+    suspend fun getCountries(): List<Country>?
+    suspend fun getDataByCountry(slug: String): DetailCountry?
 }
