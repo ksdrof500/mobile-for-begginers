@@ -2,13 +2,26 @@ package com.coronaintheworld.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.coronaintheworld.remote.common.ViewState
-import com.coronaintheworld.repository.CountryRepository
+import com.coronaintheworld.common.ResponseHandler
+import com.coronaintheworld.common.ViewState
+import com.coronaintheworld.domain.usecase.CountriesUseCase
+import com.coronaintheworld.mapper.CountryUIModelMapper
 
-class HomeViewModel(val countryRepository: CountryRepository) : ViewModel() {
+class HomeViewModel(
+    private val countriesUseCase: CountriesUseCase,
+    private val responseHandler: ResponseHandler
+) : ViewModel() {
 
-    val countries  = liveData {
+    val countries = liveData {
         emit(ViewState.loading())
-        emit(countryRepository.getCountries())
+        try {
+            emit(
+                responseHandler.handleSuccess(
+                    CountryUIModelMapper.map(countriesUseCase())
+                )
+            )
+        } catch (e: Exception) {
+            emit(responseHandler.handleException(e))
+        }
     }
 }

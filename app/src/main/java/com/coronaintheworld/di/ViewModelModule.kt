@@ -11,20 +11,23 @@ val viewModelModule = module {
 
     viewModel {
         SplashViewModel(
-            firebaseAuth = get()
+            authUseCase = get()
         )
     }
 
     viewModel {
         HomeViewModel(
-            countryRepository = get()
+            countriesUseCase = get(),
+            responseHandler = get()
         )
     }
 
     viewModel {
         DetailViewModel(
             favoritePreferences = get(),
-            countryRepository = get()
+            countriesByDateUseCase = get(),
+            context = get(),
+            responseHandler = get()
         )
     }
 
@@ -33,5 +36,4 @@ val viewModelModule = module {
             notificationRepository = get()
         )
     }
-
 }

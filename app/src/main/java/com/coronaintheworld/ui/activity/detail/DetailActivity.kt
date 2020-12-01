@@ -6,17 +6,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.coronaintheworld.R
+import com.coronaintheworld.common.Status
 import com.coronaintheworld.common.showErrorKT
-import com.coronaintheworld.remote.common.Status
-import com.coronaintheworld.remote.dto.DetailCountry
+import com.coronaintheworld.model.DetailCountryUiModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
+import java.util.* // ktlint-disable
 
 class DetailActivity : AppCompatActivity() {
     private val slugNation: String by lazy { intent.getStringExtra(EXTRA_SLUG) }
@@ -46,13 +44,16 @@ class DetailActivity : AppCompatActivity() {
 
     private fun binder() {
         detailViewModel.getDetail(slugCountry = slugNation)
-        detailViewModel.detail.observe(this, Observer {
-            when (it.status) {
-                Status.SUCCESS -> setupData(it.data)
-                Status.ERROR -> showError()
-                Status.LOADING -> toggleLoading(true)
+        detailViewModel.detail.observe(
+            this,
+            Observer {
+                when (it.status) {
+                    Status.SUCCESS -> setupData(it.data)
+                    Status.ERROR -> showError()
+                    Status.LOADING -> toggleLoading(true)
+                }
             }
-        })
+        )
     }
 
     private fun setupHeader() {
@@ -67,13 +68,13 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupData(data: DetailCountry?) {
+    private fun setupData(data: DetailCountryUiModel?) {
         toggleLoading(false)
         data?.let {
-            confirmed.text = getString(R.string.confirmed, it.confirmed)
-            death.text = getString(R.string.death, it.deaths)
-            recovered.text = getString(R.string.recovered, it.recovered)
-            active.text = getString(R.string.active, it.active)
+            confirmed.text = it.confirmed
+            death.text = it.deaths
+            recovered.text = it.recovered
+            active.text = it.active
         }
     }
 
@@ -85,5 +86,4 @@ class DetailActivity : AppCompatActivity() {
     private fun toggleLoading(isShow: Boolean) {
         progressBar.isVisible = isShow
     }
-
 }

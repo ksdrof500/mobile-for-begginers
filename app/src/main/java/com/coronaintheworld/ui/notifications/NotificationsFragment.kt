@@ -37,13 +37,15 @@ class NotificationsFragment : Fragment() {
 
     private fun fetch() {
         lifecycleScope.launch {
-            notificationsViewModel.getAll().observe(viewLifecycleOwner, Observer {
-                if(it.isNotEmpty())
-                    setupRecycler(it)
-                else
-                    empty.isVisible = true
-
-            })
+            notificationsViewModel.getAll().observe(
+                viewLifecycleOwner,
+                Observer {
+                    if (it.isNotEmpty())
+                        setupRecycler(it)
+                    else
+                        empty.isVisible = true
+                }
+            )
         }
     }
 }

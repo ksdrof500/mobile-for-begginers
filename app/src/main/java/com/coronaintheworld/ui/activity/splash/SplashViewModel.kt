@@ -1,10 +1,9 @@
 package com.coronaintheworld.ui.activity.splash
 
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
+import com.coronaintheworld.domain.usecase.AuthUseCase
 
-class SplashViewModel(val firebaseAuth: FirebaseAuth): ViewModel() {
+class SplashViewModel(private val authUseCase: AuthUseCase) : ViewModel() {
 
-
-    fun isCurrentUserAuth() = firebaseAuth.currentUser != null
+    fun isCurrentUserAuth() = authUseCase()
 }

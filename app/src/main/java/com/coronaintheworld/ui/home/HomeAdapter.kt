@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.coronaintheworld.R
-import com.coronaintheworld.remote.dto.Country
+import com.coronaintheworld.model.CountryUiModel
 import kotlinx.android.synthetic.main.nation_item.view.*
-
 
 class HomeAdapter(
     val homeListener: HomeListener,
-    val countryList: List<Country>
+    val countryList: List<CountryUiModel>
 ) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,7 +30,7 @@ class HomeAdapter(
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(country: Country) = with(itemView) {
+        fun bind(country: CountryUiModel) = with(itemView) {
             name.text = country.nameCountry
 
             addFlag(this, flag, country.idFlag)
@@ -47,8 +46,6 @@ class HomeAdapter(
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .fitCenter()
                 .into(flag)
-
-
         }
     }
 }

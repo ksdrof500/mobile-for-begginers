@@ -1,4 +1,4 @@
-package com.coronaintheworld.remote.common
+package com.coronaintheworld.common
 
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
@@ -14,9 +14,18 @@ open class ResponseHandler {
 
     fun <T : Any> handleException(e: Exception): ViewState<T> {
         return when (e) {
-            is HttpException -> ViewState.error(getErrorMessage(e.code()), null)
-            is SocketTimeoutException -> ViewState.error(getErrorMessage(ErrorCodes.SocketTimeOut.code), null)
-            else -> ViewState.error(getErrorMessage(Int.MAX_VALUE), null)
+            is HttpException -> ViewState.error(
+                getErrorMessage(e.code()),
+                null
+            )
+            is SocketTimeoutException -> ViewState.error(
+                getErrorMessage(ErrorCodes.SocketTimeOut.code),
+                null
+            )
+            else -> ViewState.error(
+                getErrorMessage(Int.MAX_VALUE),
+                null
+            )
         }
     }
 

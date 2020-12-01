@@ -8,10 +8,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.coronaintheworld.R
+import com.coronaintheworld.common.Status
+import com.coronaintheworld.common.ViewState
 import com.coronaintheworld.common.showErrorKT
-import com.coronaintheworld.remote.common.Status
-import com.coronaintheworld.remote.common.ViewState
-import com.coronaintheworld.remote.dto.Country
+import com.coronaintheworld.model.CountryUiModel
 import com.coronaintheworld.ui.activity.detail.DetailActivity.Companion.launchIntent
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,13 +33,13 @@ class HomeFragment : Fragment(), HomeListener {
         homeViewModel.countries.observe(viewLifecycleOwner, observer)
     }
 
-    private fun setupRecycler(countryList: List<Country>?) {
+    private fun setupRecycler(countryList: List<CountryUiModel>?) {
         countryList?.let {
             recycler.adapter = HomeAdapter(homeListener = this, countryList = countryList)
         }
     }
 
-    private val observer = Observer<ViewState<List<Country>>> {
+    private val observer = Observer<ViewState<List<CountryUiModel>>> {
         when (it.status) {
             Status.SUCCESS -> {
                 setupRecycler(it.data)

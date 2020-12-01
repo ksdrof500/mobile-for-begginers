@@ -11,7 +11,6 @@ class NotificationRepository(val notificationDap: NotificationDao) {
         notificationDap.getAllNotification()
     }
 
-
     suspend fun saveNotification(notificationModel: NotificationModel) {
         withContext(Dispatchers.IO) {
             notificationDap.insert(notificationModel)

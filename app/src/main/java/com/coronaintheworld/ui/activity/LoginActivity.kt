@@ -25,7 +25,8 @@ class LoginActivity : AppCompatActivity() {
     private fun setupLoginProvider() {
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build())
+            AuthUI.IdpConfig.GoogleBuilder().build()
+        )
 
         startActivityForResult(
             AuthUI.getInstance()
@@ -33,9 +34,9 @@ class LoginActivity : AppCompatActivity() {
                 .setLogo(R.mipmap.ic_launcher)
                 .setAvailableProviders(providers)
                 .build(),
-            RC_SIGN_IN)
+            RC_SIGN_IN
+        )
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

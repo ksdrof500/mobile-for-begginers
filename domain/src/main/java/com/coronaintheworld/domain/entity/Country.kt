@@ -1,4 +1,4 @@
-package com.coronaintheworld.remote.dto
+package com.coronaintheworld.domain.entity
 
 import com.google.gson.annotations.SerializedName
 

@@ -18,7 +18,6 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import java.io.IOException
 
-
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
 class NotificationRepositoryTest {
@@ -32,7 +31,8 @@ class NotificationRepositoryTest {
     fun setup() {
         MockitoAnnotations.initMocks(this)
         notificationDatabase = Room.inMemoryDatabaseBuilder(
-            context, NotificationDatabase::class.java
+            context,
+            NotificationDatabase::class.java
         ).build()
         notificationDao = notificationDatabase.notificationDao
         notificationRepository = NotificationRepository(notificationDao)

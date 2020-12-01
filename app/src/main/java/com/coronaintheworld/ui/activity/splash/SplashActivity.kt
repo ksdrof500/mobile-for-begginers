@@ -22,20 +22,22 @@ class SplashActivity : AppCompatActivity() {
 
     private fun onConfigLoaded() {
         animationView.playAnimation()
-        animationView.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationRepeat(animation: Animator?) {
-            }
+        animationView.addAnimatorListener(
+            object : Animator.AnimatorListener {
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
 
-            override fun onAnimationEnd(animation: Animator?) {
-                openNextScreen()
-            }
+                override fun onAnimationEnd(animation: Animator?) {
+                    openNextScreen()
+                }
 
-            override fun onAnimationCancel(animation: Animator?) {
-            }
+                override fun onAnimationCancel(animation: Animator?) {
+                }
 
-            override fun onAnimationStart(animation: Animator?) {
+                override fun onAnimationStart(animation: Animator?) {
+                }
             }
-        })
+        )
     }
 
     private fun openNextScreen() {

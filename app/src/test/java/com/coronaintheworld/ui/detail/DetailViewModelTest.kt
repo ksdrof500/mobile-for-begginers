@@ -2,10 +2,9 @@ package com.coronaintheworld.ui.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.coronaintheworld.common.ViewState
+import com.coronaintheworld.domain.entity.DetailCountry
 import com.coronaintheworld.local.FavoritePreferences
-import com.coronaintheworld.remote.common.ViewState
-import com.coronaintheworld.remote.dto.DetailCountry
-import com.coronaintheworld.repository.CountryRepository
 import com.coronaintheworld.ui.activity.detail.DetailViewModel
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -31,7 +30,6 @@ class DetailViewModelTest {
     private lateinit var favoritePreferences: FavoritePreferences
     private lateinit var detailObserver: Observer<ViewState<DetailCountry>>
     private val slug = "brazil"
-
 
     @Rule
     @JvmField
@@ -63,7 +61,7 @@ class DetailViewModelTest {
         runBlockingTest {
             // Given
             val success = ViewState.success(data = Any())
-            whenever(countryRepository.getDataByCountry(slug)).thenReturn(success as ViewState<DetailCountry>?)
+            whenever(countryRepository.getDataByCountry(slug)).thenReturn(success as ViewState<*>?)
 
             // When
             viewModel.detail.observeForever(detailObserver)
@@ -92,5 +90,4 @@ class DetailViewModelTest {
             verify(detailObserver).onChanged(ViewState.loading())
             verify(detailObserver).onChanged(errorResource)
         }
-
 }

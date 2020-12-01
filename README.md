@@ -11,7 +11,8 @@ A Corona in the world for you study:
 - Save data local (Preferences/Room)
 - Requests Rest 
 - PushNotification 
-- Firebase stack 
+- Firebase stack
+- KTLint
 
 ## Getting Started
 
@@ -66,6 +67,8 @@ Run instrumentation tests:
 * [Timber](https://github.com/JakeWharton/timber) - The framework for logs
 * [Mockito](https://github.com/mockito/mockito) - The framework for test
 * [Lottie](https://github.com/airbnb/lottie-android) - Lib for Animations
+* [KTLint](https://ktlint.github.io/#getting-started) - Lib for Lint
+
 
 ## Authors
 

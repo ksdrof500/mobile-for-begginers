@@ -1,16 +1,21 @@
 package com.coronaintheworld.ui.activity.detail
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
+import com.coronaintheworld.common.ResponseHandler
+import com.coronaintheworld.common.ViewState
+import com.coronaintheworld.domain.usecase.CountriesByDateUseCase
 import com.coronaintheworld.local.FavoritePreferences
-import com.coronaintheworld.remote.common.ViewState
-import com.coronaintheworld.repository.CountryRepository
+import com.coronaintheworld.mapper.DetailCountryUIModelMapper
 
 class DetailViewModel(
     val favoritePreferences: FavoritePreferences,
-    val countryRepository: CountryRepository
+    val countriesByDateUseCase: CountriesByDateUseCase,
+    val context: Context,
+    val responseHandler: ResponseHandler
 ) : ViewModel() {
 
     private val slug = MutableLiveData<String>()
@@ -18,7 +23,15 @@ class DetailViewModel(
     var detail = slug.switchMap {
         liveData {
             emit(ViewState.loading())
-            emit(countryRepository.getDataByCountry(it))
+            try {
+                emit(
+                    responseHandler.handleSuccess(
+                        DetailCountryUIModelMapper.map(context, countriesByDateUseCase(it))
+                    )
+                )
+            } catch (e: Exception) {
+                emit(responseHandler.handleException(e))
+            }
         }
     }
 

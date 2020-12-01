@@ -2,9 +2,8 @@ package com.coronaintheworld.ui.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.coronaintheworld.remote.common.ViewState
-import com.coronaintheworld.remote.dto.Country
-import com.coronaintheworld.repository.CountryRepository
+import com.coronaintheworld.common.ViewState
+import com.coronaintheworld.domain.entity.Country
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -57,7 +56,7 @@ class HomeViewModelTest {
         runBlockingTest {
             // Given
             val success = ViewState.success(data = Any())
-            whenever(countryRepository.getCountries()).thenReturn(success as ViewState<List<Country>>?)
+            whenever(countryRepository.getCountries()).thenReturn(success as ViewState<*>?)
 
             // When
             viewModel.countries.observeForever(countryObserver)
@@ -77,7 +76,7 @@ class HomeViewModelTest {
             val errorResource = ViewState.error("Unauthorised", null)
             whenever(countryRepository.getCountries()).thenReturn(errorResource)
 
-            //When
+            // When
             viewModel.countries.observeForever(countryObserver)
             viewModel.countries
 
